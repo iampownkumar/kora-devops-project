@@ -3,18 +3,22 @@ pipeline {
     stages {
         stage('Pull Code') {
             steps {
-                echo 'Pulling from GitHub... lets see it is working or not '
-                sh 'whoami'
-                sh 'date'
-                sh 'echo Build successful on AWS EC2!'
+                echo 'Code pulled from GitHub'
+                sh 'ls -la'
+            }
+        }
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t kora-web:latest .'
+                sh 'docker images | grep kora-web'
             }
         }
         stage('Deploy') {
             steps {
-                echo 'Deploying on EC2...'
-                sh 'echo App is live!'
-                echo ' So if  i seing this built in the jenkins that means the web-hook is worked '
-                echo 'hi babe'
+                sh 'docker stop kora-web || true'
+                sh 'docker rm kora-web || true'
+                sh 'docker run -d --name kora-web -p 3000:80 kora-web:latest'
+                sh 'echo App deployed at port 3000'
             }
         }
     }
