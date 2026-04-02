@@ -1,0 +1,9 @@
+<!DOCTYPE html>
+<html>
+<head><title>Kora DevOps</title></head>
+<body>
+  <h1>Deployed by Jenkins on AWS EC2</h1>
+  <p>Pipeline: GitHub → Jenkins → Docker → Live</p>
+  <p>Built by Pownkumar A | korelium.org</p>
+</body>
+</html>
