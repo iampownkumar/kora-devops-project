@@ -1,5 +1,5 @@
 pipeline{
-    agent any {
+    agent any 
           stages {
                 stage('pull the code from the git hub') {
                     steps{ 
@@ -18,5 +18,5 @@ pipeline{
   
                 }
         }
-    }
+    
 }
